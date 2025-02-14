@@ -62,6 +62,23 @@
             width: 150px;
             border-radius: 10px;
         }
+        .fullscreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .fullscreen img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -70,7 +87,7 @@
     
     <div class="gallery">
         <img src="/main.JPG" alt="Гол зураг" class="main-image">
-        <img src="/image-1.JPG" alt="Бидний зураг 2" style="height: 200px;">
+        <img src="/image-1.JPG" alt="Бидний зураг 2" style="height: 200px;"onclick="toggleFullscreen(this)">
         <video controls style="height: 250px;">
             <source src="/vid.mp4" type="video/mp4">
             Таны хөтөч видеог дэмжихгүй байна.
@@ -80,7 +97,22 @@
         <img src="/image-4.JPG" alt="Бидний зураг 6" style="height: 210px;">
         <img src="/image-5.JPG" alt="Бидний зураг 5" style="height: 230px;">
     </div>
+   
+    <div class="fullscreen" id="fullscreen" onclick="toggleFullscreen()">
+        <img id="fullscreen-img" src="">
+    </div>
     
-
+    <script>
+        function toggleFullscreen(img) {
+            var fullscreenDiv = document.getElementById('fullscreen');
+            var fullscreenImg = document.getElementById('fullscreen-img');
+            if (fullscreenDiv.style.display === 'flex') {
+                fullscreenDiv.style.display = 'none';
+            } else {
+                fullscreenImg.src = img.src;
+                fullscreenDiv.style.display = 'flex';
+            }
+        }
+    </script>
 </body>
 </html>
